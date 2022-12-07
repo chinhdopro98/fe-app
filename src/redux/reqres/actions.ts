@@ -9,6 +9,7 @@ import {
   UserDetailsSuccessPayload,
   UsersRequestPayload,
   UsersSuccessPayload,
+  UserLogin
 } from './types';
 
 export const getUsersListRequest = createAction<UsersRequestPayload>('ACTION/GET_USERS_LIST_REQUEST');
@@ -30,3 +31,7 @@ export const modifyUserFailed = createAction('ACTION/MODIFY_USER_FAILED');
 export const deleteUserRequest = createAction<DeleteUserRequestPayload>('ACTION/DELETE_USER_REQUEST');
 export const deleteUserSuccess = createAction('ACTION/DELETE_USER_SUCCESS');
 export const deleteUserFailed = createAction('ACTION/DELETE_USER_FAILED');
+
+export const loginUserRequest = createAction<UserLogin>('ACTION/LOGIN_USER_REQUEST');
+export const loginUserSuccess = createAction('ACTION/LOGIN_USER_SUCCESS');
+export const loginUserFailed = createAction('ACTION/LOGIN_USER_FAILED');

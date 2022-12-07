@@ -11,3 +11,6 @@
 
 -keep class com.swmansion.reanimated.** { *; }
 -keep class com.facebook.react.turbomodule.** { *; }
+-keep class org.webrtc.** { *; }
+-keep class com.twilio.** { *; }
+-keep class tvi.webrtc.** { *; }

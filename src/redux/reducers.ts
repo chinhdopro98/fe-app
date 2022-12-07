@@ -2,10 +2,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { usersReducer } from '@redux/reqres/reducers';
 import { persistCombineReducers } from 'redux-persist';
 import messagesReducer from './messageHandler/reducers';
-
+import testReducer from './testHandler/reducers';
+import propsReducer from './propsHandler/reducers';
 const reducers = {
   users: usersReducer,
   messages: messagesReducer,
+  test: testReducer,
+  props: propsReducer
 };
 
 const persistConfig = {

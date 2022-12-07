@@ -33,7 +33,7 @@ const InnerApp: FC = () => {
 
   return (
     <>
-      <StatusBar barStyle="dark-content" />
+      <StatusBar barStyle="light-content"  />
 
       <RootStackScreen />
     </>

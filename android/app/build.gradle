@@ -133,8 +133,18 @@ def reactNativeArchitectures() {
 android {
     ndkVersion rootProject.ext.ndkVersion
 
+    dexOptions {
+     jumboMode true
+   }
     compileSdkVersion rootProject.ext.compileSdkVersion
-
+    packagingOptions {
+        pickFirst '**/libc++_shared.so'
+        pickFirst '**/libfbjni.so'
+    }
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
     defaultConfig {
         applicationId "com.reactnativestarterapp"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -266,6 +276,7 @@ dependencies {
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
     implementation 'com.facebook.fresco:fresco:2.6.0'
+    implementation(project(':react-native-twilio-video-webrtc'))
 
     // For animated GIF support
     implementation 'com.facebook.fresco:animated-gif:2.6.0'

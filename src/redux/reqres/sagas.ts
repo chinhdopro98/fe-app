@@ -14,6 +14,7 @@ import {
   getUsersListFailed,
   getUsersListRequest,
   getUsersListSuccess,
+  loginUserRequest,
   modifyUserRequest,
 } from './actions';
 import * as UsersAPI from './apiCall';
@@ -27,6 +28,7 @@ import {
   ModifyUserRequestPayload,
   ModifyUserSuccessPayload,
   DeleteUserRequestPayload,
+  UserLogin
 } from './types';
 
 function* getUsersListSaga({ payload }: PayloadAction<UsersRequestPayload>) {
@@ -107,13 +109,28 @@ function* deleteUserSaga({ payload }: PayloadAction<DeleteUserRequestPayload>) {
     );
   }
 }
+function* userLoginSaga({ payload }: PayloadAction<UserLogin>) {
+  try {
+    const response: { status: number } = yield call(UsersAPI.login, { ...payload });
 
+    if (response.status === 204) {
+      yield put(messageHandlerSet({ message: i18n.t('Homepage:UserLogined'), status: 'success' }));
+    } else {
+      yield put(messageHandlerSet({ message: i18n.t('Homepage:UserNotLogined'), status: 'error' }));
+    }
+  } catch (err: any) {
+    yield put(
+      messageHandlerSet({ message: err?.message?.message ?? i18n.t('Homepage:UserNotLogined'), status: 'error' }),
+    );
+  }
+}
 function* usersSaga(): Generator<ForkEffect<never>, void> {
   yield takeLatest(getUsersListRequest.type, getUsersListSaga);
   yield takeLatest(getUserDetailsRequest.type, getUserDetailsSaga);
   yield takeLatest(createUserRequest.type, createUserSaga);
   yield takeLatest(modifyUserRequest.type, modifyUserSaga);
   yield takeLatest(deleteUserRequest.type, deleteUserSaga);
+  yield takeLatest(loginUserRequest.type, userLoginSaga);
 }
 
 export default usersSaga;

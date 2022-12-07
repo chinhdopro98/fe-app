@@ -22,6 +22,12 @@ export type ModifyUserSuccessPayload = {
   updatedAt: string;
 };
 
+export type UserLogin = {
+  // dataLogin:{
+    email: string;
+    password: string
+  // }
+}
 export type DeleteUserRequestPayload = {
   userId: string;
 };

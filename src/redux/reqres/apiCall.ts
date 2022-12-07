@@ -1,5 +1,6 @@
 import ApiClient from '@api';
 import env from '@env';
+
 import {
   CreateUserRequestPayload,
   CreateUserSuccessPayload,
@@ -10,7 +11,9 @@ import {
   UserDetailsSuccessPayload,
   UsersRequestPayload,
   UsersSuccessPayload,
+  UserLogin
 } from './types';
+import axios from 'axios'
 
 export async function getUsers({ pageParam, per_page }: UsersRequestPayload) {
   try {
@@ -86,3 +89,33 @@ export async function deleteUser({ userId }: DeleteUserRequestPayload) {
     throw error;
   }
 }
+// export async function login({dataLogin}:UserLogin) {
+//   try {
+//     const response = await axios.post('http://10.10.21.91:3001/auth/login',{dataLogin});
+//     return response
+//   }
+//   catch (error) {
+//     console.error(error);
+//     throw error;
+//   }
+// }
+// export async function register({email, password}:UserLogin) {
+//   try {
+//     const response = await axios.post('http://10.10.21.91:3001/auth/login');
+//     return response
+//   }
+//   catch (error) {
+//     console.error(error);
+//     throw error;
+//   }
+// }
+// export async function getUsers(){
+//   try {
+//     const response = await axios.get('http://10.10.21.91:3001/auth/login');
+//     return response
+//   }
+//   catch (error) {
+//     console.error(error);
+//     throw error;
+//   }
+// }

@@ -18,7 +18,14 @@ const customTheme = extendTheme({
 
     ...palette,
   },
-
+  components: {
+    Input: {
+      baseStyle: {
+        color: 'red.400',
+      },
+      defaultProps: { size: '2xl' },
+    },
+  },
   ...typography,
 
   config: {
