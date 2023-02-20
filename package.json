@@ -48,7 +48,7 @@
     "@reduxjs/toolkit": "1.8.4",
     "axios": "^0.27.2",
     "feather-icons": "^4.29.0",
-    "i18next": "21.9.1",
+    "i18next": "22.4.10",
     "lodash": "^4.17.21",
     "native-base": "3.4.13",
     "react": "18.2.0",
